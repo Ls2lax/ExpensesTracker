@@ -2,6 +2,7 @@ package com.example.expensestracker.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
@@ -15,6 +16,9 @@ interface ExpenseDao {
 
     @Update
     abstract fun updateExpense(expense: Expense)
+
+    @Delete
+    abstract fun deleteExpense(expense: Expense)
 
     @Query("select * from expenses")
     abstract fun getAllExpenses(): LiveData<List<Expense>>

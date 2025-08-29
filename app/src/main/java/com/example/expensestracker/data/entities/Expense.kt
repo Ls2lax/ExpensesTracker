@@ -8,9 +8,9 @@ import java.util.Date
 @Entity("expenses")
 data class Expense(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    @ColumnInfo val category: String,
-    @ColumnInfo val amount: Double,
-    @ColumnInfo val note: String?,
-    @ColumnInfo val date: String,
-    @ColumnInfo val type: String
+    @ColumnInfo var category: String,
+    @ColumnInfo var amount: Double,
+    @ColumnInfo var note: String,
+    @ColumnInfo var date: String,
+    @ColumnInfo var type: ExpenseType
 )

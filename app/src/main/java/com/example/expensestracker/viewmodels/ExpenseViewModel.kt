@@ -21,6 +21,12 @@ class ExpenseViewModel(private val expenseRepo: ExpenseRepository): ViewModel() 
         }
     }
 
+    fun deleteExpense(expense: Expense) {
+        viewModelScope.launch(Dispatchers.IO) {
+            expenseRepo.deleteExpense(expense)
+        }
+    }
+
     fun updateExpense(expense: Expense) {
         viewModelScope.launch(Dispatchers.IO) {
             expenseRepo.updateExpense(expense)

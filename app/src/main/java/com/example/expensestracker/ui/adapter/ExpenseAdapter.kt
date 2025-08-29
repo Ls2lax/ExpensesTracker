@@ -3,13 +3,18 @@ package com.example.expensestracker.ui.adapter
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.Visibility
 import com.example.expensestracker.data.entities.Expense
+import com.example.expensestracker.data.entities.ExpenseType
 import com.example.expensestracker.databinding.ItemExpenseBinding
 
 class ExpenseAdapter(
     var expenseList: List<Expense>,
-    val onclick: (Expense) -> Unit
+    val onEdit: (Expense) -> Unit,
+    val onDelete: (Expense) -> Unit
 ): RecyclerView.Adapter<ExpenseAdapter.ExpenseViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -41,10 +46,22 @@ class ExpenseAdapter(
             binding.itemDate.text = expense.date
             binding.itemNote.text = expense.note
             binding.itemAmount.text = expense.amount.toString()
-            if(expense.type == "Expense") {
+            if(expense.type == ExpenseType.INCOME) {
                 binding.itemAmount.setTextColor(Color.GREEN)
             } else {
                 binding.itemAmount.setTextColor(Color.RED)
+            }
+            binding.edit.isVisible = false
+            binding.delete.isVisible = false
+            binding.item.setOnClickListener {
+                binding.edit.isVisible = !binding.edit.isVisible
+                binding.delete.isVisible = !binding.delete.isVisible
+            }
+            binding.edit.setOnClickListener {
+                onEdit(expense)
+            }
+            binding.delete.setOnClickListener {
+                onDelete(expense)
             }
         }
     }

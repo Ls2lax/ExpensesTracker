@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center_horizontal">
 
@@ -33,12 +34,32 @@
         android:hint="date"
         android:inputType="date" />
 
-    <EditText
-        android:id="@+id/type"
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/toggleButtonGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:hint="Type" />
+        app:singleSelection="true"
+        app:selectionRequired="true"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/ExpenseButton"
+            android:layout_width="match_parent"
+            android:layout_weight=".5"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:text="Expense"
+            />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/IncomeButton"
+            android:layout_width="match_parent"
+            android:layout_weight=".5"
+            android:layout_height="wrap_content"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:text="Income"
+            />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
 
     <Button
         android:id="@+id/save"
