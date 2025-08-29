@@ -11,6 +11,6 @@ data class Expense(
     @ColumnInfo var category: String,
     @ColumnInfo var amount: Double,
     @ColumnInfo var note: String,
-    @ColumnInfo var date: String,
+    @ColumnInfo var date: Long,
     @ColumnInfo var type: ExpenseType
 )

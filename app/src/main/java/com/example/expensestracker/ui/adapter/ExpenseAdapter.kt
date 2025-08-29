@@ -1,6 +1,8 @@
 package com.example.expensestracker.ui.adapter
 
 import android.graphics.Color
+import android.icu.text.DateFormat
+import android.icu.text.SimpleDateFormat
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isGone
@@ -10,6 +12,8 @@ import androidx.transition.Visibility
 import com.example.expensestracker.data.entities.Expense
 import com.example.expensestracker.data.entities.ExpenseType
 import com.example.expensestracker.databinding.ItemExpenseBinding
+import java.util.Date
+import java.util.Locale
 
 class ExpenseAdapter(
     var expenseList: List<Expense>,
@@ -43,7 +47,8 @@ class ExpenseAdapter(
 
     inner class ExpenseViewHolder(val binding: ItemExpenseBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(expense: Expense) {
-            binding.itemDate.text = expense.date
+            val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            binding.itemDate.text = sdf.format(Date(expense.date))
             binding.itemNote.text = expense.note
             binding.itemAmount.text = expense.amount.toString()
             if(expense.type == ExpenseType.INCOME) {

@@ -17,14 +17,14 @@
         android:padding="10dp"
         android:gravity="center_horizontal">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/total_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Balance: "
             android:paddingLeft="20dp"/>
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/total_expense"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,13 +33,13 @@
 
     </LinearLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/add_expense"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Expense" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/show_expenses"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
