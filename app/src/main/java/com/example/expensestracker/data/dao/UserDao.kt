@@ -12,6 +12,6 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     fun registerUser(user: User)
 
-    @Query("select * from users where email = :email and password = :password limit 1")
+    @Query("select * from Users where email = :email and password = :password limit 1")
     fun loginUser(email: String, password: String): User?
 }

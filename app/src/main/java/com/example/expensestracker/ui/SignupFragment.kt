@@ -1,6 +1,7 @@
 package com.example.expensestracker.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.expensestracker.R
@@ -24,11 +25,12 @@ class SignupFragment : Fragment(R.layout.fragment_signup) {
         userViewModel = UserViewModel(userRepo)
 
         binding.signup.setOnClickListener {
-            val email = binding.sEmail.toString()
-            val name = binding.sName.toString()
-            val password = binding.sPassword.toString();
+            val email = binding.sEmail.text.toString()
+            val name = binding.sName.text.toString()
+            val password = binding.sPassword.text.toString();
 
-            if(email.isNotEmpty() || name.isNotEmpty() || password.isNotEmpty()) {
+            if(email.isNotEmpty() && name.isNotEmpty() && password.isNotEmpty()) {
+                Log.d("Laxman", email + name + password)
                 userViewModel.registerUser(User(name = name, email =  email, password =  password),{success, message ->
                     Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
                     if(success) {

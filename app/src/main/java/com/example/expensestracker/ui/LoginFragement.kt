@@ -27,8 +27,8 @@ class LoginFragement : Fragment(R.layout.fragment_login_fragement) {
         userViewModel = UserViewModel(userRepo)
 
         binding.login.setOnClickListener {
-            val email = binding.lEmail.toString()
-            val password = binding.lPassowod.toString()
+            val email = binding.lEmail.text.toString()
+            val password = binding.lPassowod.text.toString()
             userViewModel.loginUser(email, password, {user ->
                 if(user != null) {
                     saveUserSession(user)
